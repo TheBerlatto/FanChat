@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
-    return <h1>Olá, mundo!</h1>
+    return (
+        <div
+            className='container border mt-2'>
+            <div className='row'>
+                <div className='col-12'> 
+                    <h1 className='text-center'>Escolha um personagem para conversar:</h1>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 ReactDOM.render(
-    <App/>,
+    <App />,
     document.querySelector('#root')
 )
