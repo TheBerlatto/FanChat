@@ -1,18 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Cartao from './Cartao'
+import Personagem from './Personagem'
 
 const App = () => {
     return (
         <div
             className='container border mt-2'>
             <div className='row'>
-                <div className='col-12'> 
+                <div className='col-12'>
                     <h1 className='text-center'>Escolha um personagem para conversar:</h1>
                 </div>
                 <div className='row'>
                     <div className='col-12 col-xl-3 col-lg-6 mt-3 mb-3'>
-                        <div className='border p-4 d-flex align-items-end' style={{ minHeight: '150px'}}>Toretto</div>
+                        <Cartao
+                            cabecalho="Velozes e Furiosos">
+                            <Personagem
+                                personagem="Toretto">          
+                            </Personagem>
+                        </Cartao>
                     </div>
                 </div>
                 <div className='row'>
