@@ -1,0 +1,22 @@
+/* src/components/Chat.css */
+.chat-window {
+    background-color: #f8f9fa;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-mensagens {
+    background-color: white;
+    border-radius: 5px;
+    overflow-y: auto;
+  }
+  
+  .chat-msg.enviada {
+    text-align: right;
+  }
+  
+  .chat-msg.recebida {
+    text-align: left;
+  }
+  

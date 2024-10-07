@@ -1,48 +1,61 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Cartao from './Cartao'
-import Personagem from './Personagem'
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cartao from './componentes/Cartao';
+import Personagem from './componentes/Personagem';
+import './componentes/Chat.css';
+import Chat from './componentes/Chat';
 
 const App = () => {
-    return (
-        <div
-            className='container border mt-2'>
-            <div className='row'>
-                <div className='col-12'>
-                    <h1 className='text-center'>Escolha um personagem para conversar:</h1>
-                </div>
-                <div className='row'>
-                    <div className='col-12 col-xl-3 col-lg-6 mt-3 mb-3'>
-                        <Cartao
-                            cabecalho="Velozes e Furiosos">
-                            <Personagem
-                                personagem="Toretto">          
-                            </Personagem>
-                        </Cartao>
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col-12 col-xl-3 col-lg-6 mb-3'>
-                        <div className='border p-4 d-flex align-items-end' style={{ minHeight: '150px' }}>Tony Stark</div>
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col-12 col-xl-3 col-lg-6 mb-3'>
-                        <div className='border p-4 d-flex align-items-end' style={{ minHeight: '150px' }}>Katniss</div>
-                    </div>
-                </div>
-                <div className='row'>
-                    <div className='col-12 col-xl-3 col-lg-6 mb-3'>
-                        <div className='border p-4 d-flex align-items-end' style={{ minHeight: '150px' }}>Spider Man</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+  const personagens = ['Toretto', 'Tony Stark', 'Katniss', 'Spider Man'];
+  const [mensagens, setMensagens] = useState([]); // Armazena as mensagens do chat
+  const [personagemAtivo, setPersonagemAtivo] = useState(null); // Personagem ativo no chat
 
-ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
-)
+  // Função para selecionar personagem
+  const iniciarConversa = (personagem) => {
+    setPersonagemAtivo(personagem);
+    setMensagens([]); // Limpa as mensagens ao selecionar um novo personagem
+  };
+
+  // Função para enviar mensagem
+  const enviarMensagem = (texto) => {
+    setMensagens([...mensagens, { tipo: 'enviada', texto }]);
+  };
+
+  return (
+    <div className='container mt-2'>
+      <div className='row'>
+        {/* Coluna de Personagens */}
+        <div className='col-12 col-md-4'>
+          <h2>Personagens</h2>
+          <div className='colunm'>
+            {personagens.map((personagem, index) => (
+              <div key={index} className='col-12 col-xl-6 col-lg-12 mb-3'>
+                <Cartao cabecalho={personagem}>
+                  <Personagem nome={personagem} onSelect={() => iniciarConversa(personagem)} />
+                </Cartao>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Coluna de Chat */}
+        <div className='col-12 col-md-8'>
+          {personagemAtivo ? (
+            <Chat
+              personagem={personagemAtivo}
+              mensagens={mensagens}
+              enviarMensagem={enviarMensagem}
+            />
+          ) : (
+            <div className='text-center'>
+              <h3>Selecione um personagem para conversar</h3>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.querySelector('#root'));
