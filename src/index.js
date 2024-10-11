@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cartao from './componentes/Cartao';
-import Personagem from './componentes/Personagem';
 import './componentes/Chat.css';
 import Chat from './componentes/Chat';
 
@@ -38,9 +37,10 @@ const App = () => {
           <div className='colunm'>
             {personagens.map((personagem, index) => (
               <div key={index} className='col-12 col-xl-6 col-lg-10 mb-3'>
-                <Cartao imagem={imagensPersonagens[personagem]}>
-                  <Personagem nome={personagem} onSelect={() => iniciarConversa(personagem)} />
-                </Cartao>
+                <Cartao 
+                  imagem={imagensPersonagens[personagem]}
+                  nome={personagem}
+                  onSelect={() => iniciarConversa(personagem)}/>
               </div>
             ))}
           </div>
