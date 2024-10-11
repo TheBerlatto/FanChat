@@ -9,7 +9,7 @@ import Chat from './componentes/Chat';
 const imagensPersonagens = {
   'Toretto': require('./images/Toretto.jpg'),
   'Tony Stark': require('./images/TonyStark.jpg'),
-  'Katniss Everdeen': require('./images/Katniss.jpeg'),
+  'Katniss Everdeen': require('./images/Katniss.jpg'),
   'Bob Esponja': require('./images/BobEsponja.jpg'),
 }
 
@@ -37,7 +37,7 @@ const App = () => {
           <h2>Personagens</h2>
           <div className='colunm'>
             {personagens.map((personagem, index) => (
-              <div key={index} className='col-12 col-xl-6 col-lg-12 mb-3'>
+              <div key={index} className='col-12 col-xl-6 col-lg-10 mb-3'>
                 <Cartao imagem={imagensPersonagens[personagem]}>
                   <Personagem nome={personagem} onSelect={() => iniciarConversa(personagem)} />
                 </Cartao>
