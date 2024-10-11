@@ -31,23 +31,25 @@ const App = () => {
   return (
     <div className='container mt-2'>
       <div className='row'>
+      <h2 className='mb-4'>Personagens</h2>
+      </div>
+      <div className='row'>
         {/* Coluna de Personagens */}
         <div className='col-12 col-md-4'>
-          <h2>Personagens</h2>
           <div className='colunm'>
             {personagens.map((personagem, index) => (
               <div key={index} className='col-12 col-xl-6 col-lg-10 mb-3'>
-                <Cartao 
+                <Cartao
                   imagem={imagensPersonagens[personagem]}
                   nome={personagem}
-                  onSelect={() => iniciarConversa(personagem)}/>
+                  onSelect={() => iniciarConversa(personagem)} />
               </div>
             ))}
           </div>
         </div>
 
         {/* Coluna de Chat */}
-        <div className='col-12 col-md-8'>
+        <div className='col-12 col-xl-8 col-md-8'>
           {personagemAtivo ? (
             <Chat
               personagem={personagemAtivo}
