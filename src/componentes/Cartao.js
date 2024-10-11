@@ -6,8 +6,8 @@ const Cartao = ({imagem, nome, onSelect}) => {
       className="card custom-card" 
       style={{ backgroundImage: `url(${imagem})`, backgroundSize: 'cover', height: '200px' }}
       onClick={onSelect}>
-        <div className="card-body d-flex align-items-center justify-content-center" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-            <h5 className='text-white'>{nome}</h5>
+        <div className="card-body d-flex align-items-end justify-content-start" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', height: '100%' }}>
+            <h5 className='text-white' style={{margin: '0', fontFamily: 'Afacad Flux'}}>{nome}</h5>
         </div>
     </div>
   )
