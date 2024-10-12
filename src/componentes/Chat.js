@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Chat.css';  // Para estilos customizados
+  // Para estilos customizados
 
 const Chat = ({ personagem, mensagens, enviarMensagem }) => {
   const [mensagem, setMensagem] = useState('');
@@ -12,9 +12,9 @@ const Chat = ({ personagem, mensagens, enviarMensagem }) => {
   };
 
   return (
-    <div className="chat-window border rounded p-3" style={{height:'400px'}}>
+    <div className="chat-window rounded p-3" style={{ height: '550px' }}>
       <h4>Conversando com {personagem}</h4>
-      <div className="chat-mensagens border p-3 mb-3" style={{ height: '300px', overflowY: 'auto' }}>
+      <div className="chat-mensagens p-3 mb-3" style={{ height: '450px', overflowY: 'auto' }}>
         {mensagens.map((msg, index) => (
           <div key={index} className={`chat-msg ${msg.tipo}`}>
             <p><strong>{msg.tipo === 'enviada' ? 'Você: ' : `${personagem}: `}</strong>{msg.texto}</p>
@@ -35,6 +35,7 @@ const Chat = ({ personagem, mensagens, enviarMensagem }) => {
       </div>
     </div>
   );
+  
 };
 
 export default Chat;

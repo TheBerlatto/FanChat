@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cartao from './componentes/Cartao';
-import './componentes/Chat.css';
 import Chat from './componentes/Chat';
+import './css/App.css'
+import './css/Chat.css';
 
 const imagensPersonagens = {
   'Toretto': require('./images/Toretto.jpg'),
@@ -34,11 +35,11 @@ const App = () => {
       <h2 className='mb-4'>Personagens</h2>
       </div>
       <div className='row'>
-        {/* Coluna de Personagens */}
+        {/* Coluna de Personagens, define o tamanho da div perante a tela */}
         <div className='col-12 col-md-4'>
           <div className='colunm'>
             {personagens.map((personagem, index) => (
-              <div key={index} className='col-12 col-xl-6 col-lg-10 mb-3'>
+              <div key={index} className='col-12 col-xl-10 col-lg-10 mb-3'> {/*define o tamanho da div perante a div de cima */}
                 <Cartao
                   imagem={imagensPersonagens[personagem]}
                   nome={personagem}
@@ -49,7 +50,7 @@ const App = () => {
         </div>
 
         {/* Coluna de Chat */}
-        <div className='col-12 col-xl-8 col-md-8'>
+        <div className='col-12 col-md-8 col-xl-8'>
           {personagemAtivo ? (
             <Chat
               personagem={personagemAtivo}
