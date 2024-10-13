@@ -32,7 +32,9 @@ const App = () => {
   return (
     <div className='container mt-2'>
       <div className='row'>
-      <h2 className='mb-4' style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700}}>Personagens</h2>
+      <h2 
+        className='mb-4' 
+        style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white'}}>Personagens</h2>
       </div>
       <div className='row'>
         {/* Coluna de Personagens, define o tamanho da div perante a tela */}
@@ -59,7 +61,7 @@ const App = () => {
             />
           ) : (
             <div className='text-center'>
-              <h3 style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700}}>Selecione um personagem para conversar</h3>
+              <h3 style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white'}}>Selecione um personagem para conversar</h3>
             </div>
           )}
         </div>

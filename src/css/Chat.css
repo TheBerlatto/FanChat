@@ -1,8 +1,7 @@
 /* src/components/Chat.css */
 .chat-window {
-    background-color: #4d4f50;
+    background-color: #605D57;
     color: white;
-    border: 1px solid #495057;
     border-radius: 0.25rem;
     height: 100%;
     display: flex;
@@ -10,7 +9,7 @@
   }
   
   .chat-mensagens {
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 5px;
     overflow-y: auto;
   }
