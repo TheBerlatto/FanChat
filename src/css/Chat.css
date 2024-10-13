@@ -16,6 +16,7 @@
   }
   
   .chat-msg.enviada {
+    color: black;
     text-align: right;
   }
   
