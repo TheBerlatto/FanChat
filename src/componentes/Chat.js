@@ -11,6 +11,12 @@ const Chat = ({ personagem, mensagens, enviarMensagem }) => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleEnviar(); // Chama a função de enviar mensagem
+    }
+  };
+
   return (
     <div className="chat-window rounded p-3" style={{ height: '550px' }}>
       <h4 className='mb-2' style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700}}>Conversando com {personagem}</h4>
@@ -28,6 +34,7 @@ const Chat = ({ personagem, mensagens, enviarMensagem }) => {
           placeholder="Digite uma mensagem..."
           value={mensagem}
           onChange={(e) => setMensagem(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button className="btn btn-success" onClick={handleEnviar}>
           Enviar
