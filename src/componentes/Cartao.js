@@ -8,7 +8,7 @@ const Cartao = ({imagem, nome, onSelect}) => {
         backgroundImage: `url(${imagem})`, 
         backgroundSize: 'cover', 
         height: '200px',
-        borderRadius: '8px',
+        borderRadius: '10px',
         overflow: 'hidden',
         border: 'none',
         cursor: 'pointer'}}
