@@ -30,7 +30,7 @@ const App = () => {
   };
 
   return (
-    <div className='container mt-2'>
+    <div className='container-fluid mt-2'>
       <div className='row'>
       <h2 
         className='mb-4' 
@@ -41,7 +41,7 @@ const App = () => {
         <div className='col-12 col-md-4'>
           <div className='colunm'>
             {personagens.map((personagem, index) => (
-              <div key={index} className='col-12 col-xl-10 col-lg-10 mb-3'> {/*define o tamanho da div perante a div de cima */}
+              <div key={index} className='col-12 col-xl-8 col-lg-10 mb-3'> {/*define o tamanho da div perante a div de cima */}
                 <Cartao
                   imagem={imagensPersonagens[personagem]}
                   nome={personagem}
