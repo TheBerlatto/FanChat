@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
   // Para estilos customizados
 
-const Chat = ({ personagem, mensagens, enviarMensagem }) => {
+const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
   const [mensagem, setMensagem] = useState('');
 
   const handleEnviar = () => {

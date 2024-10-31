@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cartao from './componentes/Cartao';
 import Chat from './componentes/Chat';
+import Personalidades from './componentes/Personalidades';
 import './css/App.css'
 import './css/Chat.css';
+
 
 const imagensPersonagens = {
   'Toretto': require('./images/Toretto.jpg'),
@@ -58,6 +60,7 @@ const App = () => {
               personagem={personagemAtivo}
               mensagens={mensagens}
               enviarMensagem={enviarMensagem}
+              personalidade={Personalidades[personagemAtivo]}
             />
           ) : (
             <div className='text-center'>
