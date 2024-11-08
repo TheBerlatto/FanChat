@@ -7,7 +7,6 @@ import Personalidades from './componentes/Personalidades';
 import './css/App.css'
 import './css/Chat.css';
 
-
 const imagensPersonagens = {
   'Toretto': require('./images/Toretto.jpg'),
   'Tony Stark': require('./images/TonyStark.jpg'),
