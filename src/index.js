@@ -26,16 +26,42 @@ const App = () => {
   };
 
   // Função para enviar mensagem
-  const enviarMensagem = (texto) => {
+  const enviarMensagem = async (texto) => {
     setMensagens([...mensagens, { tipo: 'enviada', texto }]);
+
+    try {
+      // Define o contexto da mensagem com a personalidade do personagem ativo
+      const prompt = `${Personalidades[personagemAtivo]}\n\nUsuário: ${texto}`;
+
+      // Faz a requisição ao backend
+      const response = await fetch('http://localhost:4000/pergunte-ao-gemini', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }), // Envia o prompt com a personalidade e a mensagem do usuário
+      });
+
+      const data = await response.json();
+
+      if (data.completion) {
+        // Adiciona a resposta do personagem ao chat
+        setMensagens((prevMensagens) => [
+          ...prevMensagens,
+          { tipo: 'recebida', texto: data.completion },
+        ]);
+      }
+    } catch (error) {
+      console.error("Erro ao enviar a mensagem:", error);
+    }
   };
 
   return (
     <div className='container-fluid mt-2'>
       <div className='row'>
-      <h2 
-        className='mb-4' 
-        style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white'}}>Personagens</h2>
+        <h2
+          className='mb-4'
+          style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Personagens</h2>
       </div>
       <div className='row'>
         {/* Coluna de Personagens, define o tamanho da div perante a tela */}
@@ -63,7 +89,7 @@ const App = () => {
             />
           ) : (
             <div className='text-center'>
-              <h3 style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white'}}>Selecione um personagem para conversar</h3>
+              <h3 style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Selecione um personagem para conversar</h3>
             </div>
           )}
         </div>

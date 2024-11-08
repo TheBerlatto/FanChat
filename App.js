@@ -1,19 +1,23 @@
+//habilitando o CORS para que possa haver a comunicação entre back e frontend,
+//seguindo a regra de negócio da aplicação
+const cors = require('cors');
+
 require('dotenv').config()
 const { GoogleGenerativeAI } = require('@google/generative-ai')
 //importamos o express
 const express = require('express');
 //construímos o objeto que viabiliza a especificação de endpoints
 const app = express();
-//colocamos o servidor em execução na porta 3000
-const PORT = 3000;
+//colocamos o servidor em execução na porta 4000
+const PORT = 4000;
 //aplicamos o middleware de transformação JSON
 app.use(express.json())
+app.use(cors());
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
 
 //especificamos o endpoint de interesse
-//POST /pergunte-ao-chatgpt
 app.post('/pergunte-ao-gemini', async (req, res) => {
   const model = genAI.getGenerativeModel({
     model: 'gemini-1.5-flash'
