@@ -14,12 +14,15 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
 
 //especificamos o endpoint de interesse
 //POST /pergunte-ao-chatgpt
-app.post('/pergunte-ao-gemini', (req, res) => {
+app.post('/pergunte-ao-gemini', async (req, res) => {
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-1.5-flash'
+  })
   //desestruturamos o corpo da requisição, pegando apenas o prompt
-const { prompt } = req.body
-console.log(prompt)
-//apenas devolvemos o prompt ao cliente, realizando um teste breve
-res.json({seuPrompt: prompt})
+  const { prompt } = req.body
+  console.log(prompt)
+  const result = await model.generateContent(prompt)
+  res.json({completion: result.response.text()})
 })
 
 
@@ -31,8 +34,8 @@ app.listen(PORT, () => console.log(`Em execução na porta ${PORT}`))
 const logsRouter = require('./db_log/connection/routes/logs.js');
 
 app.get('/hello-world', (req, res) => {
-    res.send('Hello World, eu estou aqui!');
-  });
+  res.send('Hello World, eu estou aqui!');
+});
 
 //ao utilizar a rota /api será chamado as rotas que estão no arquivo logs que contem a rota que faz a requisição ao banco
 app.use('/api', logsRouter);
