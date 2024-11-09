@@ -28,13 +28,13 @@ const App = () => {
   // Função para enviar mensagem
   const enviarMensagem = async (texto) => {
     const personagem = Personalidades[personagemAtivo];
-    const prompt = ` Meu nome é ${personagemAtivo}, essas são minhas características:
+    const prompt = ` Voce é ${personagemAtivo}, essas são suas características:
     Traços: ${personagem.traços.join(", ")}
     Estilo: ${personagem.estilo}
     Interesses: ${personagem.interesses.join(", ")}
     Citação Inspiradora: "${personagem.citação_inspiradora}"
     
-    Essa pargunta foi feita para mim, responda de acordo com minha personalidade: ${texto}
+    Responda resumindamente de acordo com sua personalidade: ${texto}
   `;
   
     try {
