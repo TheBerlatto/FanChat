@@ -27,30 +27,27 @@ const App = () => {
 
   // Função para enviar mensagem
   const enviarMensagem = async (texto) => {
-    setMensagens([...mensagens, { tipo: 'enviada', texto }]);
-
+    const personagem = Personalidades[personagemAtivo];
+    const prompt = ` Meu nome é ${personagemAtivo}, essas são minhas características:
+    Traços: ${personagem.traços.join(", ")}
+    Estilo: ${personagem.estilo}
+    Interesses: ${personagem.interesses.join(", ")}
+    Citação Inspiradora: "${personagem.citação_inspiradora}"
+    
+    Essa pargunta foi feita para mim, responda de acordo com minha personalidade: ${texto}
+  `;
+  
     try {
-      // Define o contexto da mensagem com a personalidade do personagem ativo
-      const prompt = `${Personalidades[personagemAtivo]}\n\nUsuário: ${texto}`;
-
-      // Faz a requisição ao backend
       const response = await fetch('http://localhost:4000/pergunte-ao-gemini', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ prompt }), // Envia o prompt com a personalidade e a mensagem do usuário
+        body: JSON.stringify({ prompt })
       });
-
+      
       const data = await response.json();
-
-      if (data.completion) {
-        // Adiciona a resposta do personagem ao chat
-        setMensagens((prevMensagens) => [
-          ...prevMensagens,
-          { tipo: 'recebida', texto: data.completion },
-        ]);
-      }
+      setMensagens([...mensagens, { tipo: 'enviada', texto }, { tipo: 'recebida', texto: data.completion }]);
     } catch (error) {
       console.error("Erro ao enviar a mensagem:", error);
     }
