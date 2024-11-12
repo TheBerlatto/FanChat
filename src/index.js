@@ -32,29 +32,27 @@ const App = () => {
   };
 
   return (
-    <div className='container-fluid mt-2'>
-      <div className='row'>
-      <h2 
-        className='mb-4' 
-        style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white'}}>Personagens</h2>
-      </div>
-      <div className='row'>
-        {/* Coluna de Personagens, define o tamanho da div perante a tela */}
-        <div className='col-12 col-md-4'>
-          <div className='colunm'>
-            {personagens.map((personagem, index) => (
-              <div key={index} className='col-12 col-xl-8 col-lg-10 mb-3'> {/*define o tamanho da div perante a div de cima */}
-                <Cartao
-                  imagem={imagensPersonagens[personagem]}
-                  nome={personagem}
-                  onSelect={() => iniciarConversa(personagem)} />
-              </div>
-            ))}
-          </div>
+    <div className='container-fluid mt-2' style={{ paddingLeft: '15px' }}>
+      <h2
+        className='mb-4'
+        style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Personagens</h2>
+
+      <div className='d-flex'>
+        {/* Coluna de Personagens */}
+        <div className='col-12 col-md-4 col-lg-3 lista-personagens' style={{ paddingLeft: '10px', paddingRight: '10px' }}>
+          {personagens.map((personagem, index) => (
+            <div key={index} className='mb-3'>
+              <Cartao
+                imagem={imagensPersonagens[personagem]}
+                nome={personagem}
+                onSelect={() => iniciarConversa(personagem)}
+              />
+            </div>
+          ))}
         </div>
 
         {/* Coluna de Chat */}
-        <div className='col-12 col-md-8 col-xl-8'>
+        <div className='col-12 col-md-8 col-lg-9 d-flex align-items-stretch'>
           {personagemAtivo ? (
             <Chat
               personagem={personagemAtivo}
@@ -63,8 +61,8 @@ const App = () => {
               personalidade={Personalidades[personagemAtivo]}
             />
           ) : (
-            <div className='text-center'>
-              <h3 style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white'}}>Selecione um personagem para conversar</h3>
+            <div className='text-center d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100%' }}>
+              <h3 style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Selecione um personagem para conversar</h3>
             </div>
           )}
         </div>

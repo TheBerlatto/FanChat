@@ -18,9 +18,9 @@ const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
   };
 
   return (
-    <div className="chat-window rounded p-3" style={{ height: '550px' }}>
+    <div className="chat-window rounded p-3 d-flex flex-column" style={{ flexGrow: 1, marginBottom: '16px'}}>
       <h4 className='mb-2' style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700}}>Conversando com {personagem}</h4>
-      <div className="chat-mensagens p-3 mb-3" style={{ height: '450px', overflowY: 'auto' }}>
+      <div className="chat-mensagens p-3 mb-3" style={{ flexGrow: 1, overflowY: 'auto'}}>
         {mensagens.map((msg, index) => (
           <div key={index} className={`chat-msg ${msg.tipo}`}>
             <p><strong>{msg.tipo === 'enviada' ? 'Você: ' : `${personagem}: `}</strong>{msg.texto}</p>
