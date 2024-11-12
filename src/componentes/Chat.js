@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
-  // Para estilos customizados
+import React, { useEffect, useRef, useState } from 'react';
 
 const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
   const [mensagem, setMensagem] = useState('');
+  const chatEndRef = useRef(null);
+
+  // Função para rolar automaticamente para o final do chat
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Rola para o final toda vez que uma nova mensagem é adicionada
+  useEffect(() => {
+    scrollToBottom();
+  }, [mensagens]);
 
   const handleEnviar = () => {
     if (mensagem.trim()) {
@@ -18,15 +28,19 @@ const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
   };
 
   return (
-    <div className="chat-window rounded p-3 d-flex flex-column" style={{ flexGrow: 1, marginBottom: '16px'}}>
-      <h4 className='mb-2' style={{margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700}}>Conversando com {personagem}</h4>
-      <div className="chat-mensagens p-3 mb-3" style={{ flexGrow: 1, overflowY: 'auto'}}>
+    <div className="chat-window rounded p-3 d-flex flex-column" style={{ flexGrow: 1, marginBottom: '16px', height: '500px', maxHeight: '500px' }}>
+      <h4 className='mb-2' style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700 }}>Conversando com {personagem}</h4>
+      
+      <div className="chat-mensagens p-3 mb-3" style={{ flexGrow: 1, overflowY: 'auto', maxHeight: '100%' }}>
         {mensagens.map((msg, index) => (
           <div key={index} className={`chat-msg ${msg.tipo}`}>
             <p><strong>{msg.tipo === 'enviada' ? 'Você: ' : `${personagem}: `}</strong>{msg.texto}</p>
           </div>
         ))}
+        {/* Elemento de referência para rolagem automática */}
+        <div ref={chatEndRef} />
       </div>
+      
       <div className="input-group">
         <input
           type="text"
@@ -42,7 +56,6 @@ const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
       </div>
     </div>
   );
-  
 };
 
 export default Chat;

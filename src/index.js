@@ -27,31 +27,43 @@ const App = () => {
 
   // Função para enviar mensagem
   const enviarMensagem = async (texto) => {
+    // Exibe a mensagem do usuário imediatamente
+    setMensagens((mensagensAnteriores) => [
+      ...mensagensAnteriores,
+      { tipo: 'enviada', texto }
+    ]);
+  
+    // Define o prompt com as características do personagem se for a primeira interação
     const personagem = Personalidades[personagemAtivo];
-    const prompt = ` Voce é ${personagemAtivo}, essas são suas características:
-    Traços: ${personagem.traços.join(", ")}
-    Estilo: ${personagem.estilo}
-    Interesses: ${personagem.interesses.join(", ")}
-    Citação Inspiradora: "${personagem.citação_inspiradora}"
-    
-    Responda resumindamente de acordo com sua personalidade: ${texto}
-  `;
+    const prompt = `Você é o personagem ${personagemAtivo}, com as seguintes características:
+      Traços: ${personagem.traços.join(", ")}
+      Estilo: ${personagem.estilo}
+      Interesses: ${personagem.interesses.join(", ")}
+      Citação Inspiradora: "${personagem.citação_inspiradora}"
+  
+      Responda resumidamente de acordo com sua personalidade: ${texto}
+    `;
   
     try {
+      // Envia o prompt para o Gemini e aguarda a resposta
       const response = await fetch('http://localhost:4000/pergunte-ao-gemini', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
       });
       
       const data = await response.json();
-      setMensagens([...mensagens, { tipo: 'enviada', texto }, { tipo: 'recebida', texto: data.completion }]);
+      
+      // Exibe a resposta do Gemini quando estiver disponível
+      setMensagens((mensagensAnteriores) => [
+        ...mensagensAnteriores,
+        { tipo: 'recebida', texto: data.completion }
+      ]);
     } catch (error) {
       console.error("Erro ao enviar a mensagem:", error);
     }
   };
+  
 
   return (
     <div className='container-fluid mt-2' style={{ paddingLeft: '15px' }}>
