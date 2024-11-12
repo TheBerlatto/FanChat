@@ -55,13 +55,13 @@ const App = () => {
 
   return (
     <div className='container-fluid mt-2' style={{ paddingLeft: '15px' }}>
-      <h2
-        className='mb-4'
-        style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Personagens</h2>
+      <h2 className='mb-4 titulos' style={{marginLeft: '10px'}}>
+        Personagens
+      </h2>
 
       <div className='d-flex'>
         {/* Coluna de Personagens */}
-        <div className='col-12 col-md-4 col-lg-3 lista-personagens' style={{ paddingLeft: '10px', paddingRight: '10px' }}>
+        <div className='col-12 col-md-4 col-lg-3 lista-personagens'>
           {personagens.map((personagem, index) => (
             <div key={index} className='mb-3'>
               <Cartao
@@ -83,8 +83,8 @@ const App = () => {
               personalidade={Personalidades[personagemAtivo]}
             />
           ) : (
-            <div className='text-center d-flex justify-content-center align-items-center' style={{ width: '100%', height: '100%' }}>
-              <h3 style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Selecione um personagem para conversar</h3>
+              <div className='text-center d-flex justify-content-center align-items-center titulos' style={{ width: '100%', height: '100%' }}>
+              <h3>Selecione um personagem para conversar</h3>
             </div>
           )}
         </div>
