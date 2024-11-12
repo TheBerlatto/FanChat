@@ -7,7 +7,6 @@ import Personalidades from './componentes/Personalidades';
 import './css/App.css'
 import './css/Chat.css';
 
-
 const imagensPersonagens = {
   'Toretto': require('./images/Toretto.jpg'),
   'Tony Stark': require('./images/TonyStark.jpg'),
@@ -27,8 +26,31 @@ const App = () => {
   };
 
   // Função para enviar mensagem
-  const enviarMensagem = (texto) => {
-    setMensagens([...mensagens, { tipo: 'enviada', texto }]);
+  const enviarMensagem = async (texto) => {
+    const personagem = Personalidades[personagemAtivo];
+    const prompt = ` Voce é ${personagemAtivo}, essas são suas características:
+    Traços: ${personagem.traços.join(", ")}
+    Estilo: ${personagem.estilo}
+    Interesses: ${personagem.interesses.join(", ")}
+    Citação Inspiradora: "${personagem.citação_inspiradora}"
+    
+    Responda resumindamente de acordo com sua personalidade: ${texto}
+  `;
+  
+    try {
+      const response = await fetch('http://localhost:4000/pergunte-ao-gemini', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt })
+      });
+      
+      const data = await response.json();
+      setMensagens([...mensagens, { tipo: 'enviada', texto }, { tipo: 'recebida', texto: data.completion }]);
+    } catch (error) {
+      console.error("Erro ao enviar a mensagem:", error);
+    }
   };
 
   return (
