@@ -66,8 +66,8 @@ const App = () => {
   
 
   return (
-    <div className='container-fluid mt-2' style={{ paddingLeft: '15px' }}>
-      <h2 className='mb-4 titulos' style={{marginLeft: '10px'}}>
+    <div>
+      <h2 className='titulos' style={{padding: '12px'}}>
         Personagens
       </h2>
 

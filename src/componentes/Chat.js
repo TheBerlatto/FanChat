@@ -30,9 +30,9 @@ const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
   };
 
   return (
-    <div className="p-3 d-flex flex-column chat-window ">
+    <div className="chat-window ">
       <h4 className='mb-2 titulos'>Conversando com {personagem}</h4>
-      <div className="chat-mensagem p-3 mb-3">
+      <div className="chat-mensagem">
         {mensagens.map((msg, index) => (
           <div key={index} className={`chat-msg ${msg.tipo}`}>
             <p><strong>{msg.tipo === 'enviada' ? 'Você: ' : `${personagem}: `}</strong>{msg.texto}</p>
