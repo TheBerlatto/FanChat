@@ -87,7 +87,7 @@ const personalidades = {
       "ajudar amigos",
       "colecionar moedas"
     ],
-    "citação_inspiradora": "It's-a me, Mario!"
+    "citação_inspiradora": "Sou eu, Mario!"
   },
   'Link': {
     "traços": [
@@ -105,7 +105,7 @@ const personalidades = {
       "aventuras",
       "espadas e magia"
     ],
-    "citação_inspiradora": "Courage need not be remembered, for it is never forgotten."
+    "citação_inspiradora": "A coragem não precisa ser lembrada, pois nunca é esquecida."
   },
   'Pikachu': {
     "traços": [
@@ -141,7 +141,7 @@ const personalidades = {
       "explorar",
       "competição"
     ],
-    "citação_inspiradora": "Gotta go fast!"
+    "citação_inspiradora": "Tenho que ir rápido!"
   },
   'Lara Croft': {
     "traços": [
@@ -159,7 +159,7 @@ const personalidades = {
       "aventura",
       "história antiga"
     ],
-    "citação_inspiradora": "I make my own luck."
+    "citação_inspiradora": "Eu faço minha própria sorte."
   },
   'Kratos': {
     "traços": [
@@ -177,7 +177,7 @@ const personalidades = {
       "proteger sua família",
       "enfrentar deuses"
     ],
-    "citação_inspiradora": "Boy. Don't be sorry, be better."
+    "citação_inspiradora": "Tudo o que eu lembro é o que perdi."
   },
   'Master Chief': {
     "traços": [
@@ -195,7 +195,7 @@ const personalidades = {
       "missões",
       "camaradagem"
     ],
-    "citação_inspiradora": "I need a weapon."
+    "citação_inspiradora": "Eu preciso de uma arma."
   },
   'Geralt de Rívia': {
     "traços": [
@@ -213,7 +213,7 @@ const personalidades = {
       "espadas e poções",
       "resolver problemas"
     ],
-    "citação_inspiradora": "People like to invent monsters and monstrosities."
+    "citação_inspiradora": "As pessoas gostam de inventar monstros e monstruosidades."
   },
   'Ryu': {
     "traços": [
@@ -231,7 +231,7 @@ const personalidades = {
       "superação",
       "honra"
     ],
-    "citação_inspiradora": "The answer lies in the heart of battle."
+    "citação_inspiradora": "A resposta está no coração da batalha."
   },
   'Solid Snake': {
     "traços": [
@@ -249,7 +249,7 @@ const personalidades = {
       "conflitos de guerra",
       "tecnologia"
     ],
-    "citação_inspiradora": "War has changed."
+    "citação_inspiradora": "A guerra mudou."
   },
   'Goku': {
     "traços": [
@@ -285,7 +285,7 @@ const personalidades = {
       "superação",
       "proteção da vila"
     ],
-    "citação_inspiradora": "Believe it!"
+    "citação_inspiradora": "Acredite!"
   },
   'Luffy': {
     "traços": [
@@ -303,7 +303,7 @@ const personalidades = {
       "lutar",
       "liberdade"
     ],
-    "citação_inspiradora": "I'm gonna be King of the Pirates!"
+    "citação_inspiradora": "Eu serei o rei dos piratas!"
   },
   'Sailor Moon': {
     "traços": [
@@ -321,7 +321,7 @@ const personalidades = {
       "magia",
       "justiça"
     ],
-    "citação_inspiradora": "In the name of the Moon, I’ll punish you!"
+    "citação_inspiradora": "Em nome da Lua, vou punir você!"
   },
   'Light Yagami': {
     "traços": [
@@ -357,7 +357,7 @@ const personalidades = {
       "justiça",
       "lutar contra titãs"
     ],
-    "citação_inspiradora": "If you win, you live. If you lose, you die. If you don't fight, you can't win!"
+    "citação_inspiradora": "Se você vencer, você vive. Se você perder, você morre. Se você não lutar, você não pode vencer!"
   },
   'Edward Elric': {
     "traços": [
@@ -375,7 +375,7 @@ const personalidades = {
       "desvendar mistérios",
       "alcançar a verdade"
     ],
-    "citação_inspiradora": "A lesson without pain is meaningless."
+    "citação_inspiradora": "Uma lição sem dor não tem sentido."
   },
   'Ichigo Kurosaki': {
     "traços": [
@@ -393,7 +393,7 @@ const personalidades = {
       "superação",
       "amizade"
     ],
-    "citação_inspiradora": "I'm not a hero, I'm a Soul Reaper!"
+    "citação_inspiradora": "Eu não sou um herói, sou um Soul Reaper!"
   },
   'Saitama': {
     "traços": [
@@ -411,7 +411,7 @@ const personalidades = {
       "simples prazeres",
       "ser herói por hobby"
     ],
-    "citação_inspiradora": "I'm just a hero for fun."
+    "citação_inspiradora": "Sou herói apenas por diversão."
   },
   'Tanjiro Kamado': {
     "traços": [
@@ -429,7 +429,7 @@ const personalidades = {
       "treinamento",
       "honrar a família"
     ],
-    "citação_inspiradora": "All I can do is work hard! That's the story of my life."
+    "citação_inspiradora": "Tudo o que posso fazer é trabalhar duro! Essa é a história da minha vida."
   }
 }  
 
