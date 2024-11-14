@@ -86,6 +86,12 @@ const App = () => {
 
   // Função para enviar mensagem
   const enviarMensagem = async (texto) => {
+
+    if (!userId) {
+      console.error("User ID não disponível");
+      return;
+    }
+
     const personagem = Personalidades[personagemAtivo];
     const prompt = ` Voce é ${personagemAtivo}, essas são suas características:
     Traços: ${personagem.traços.join(", ")}
@@ -95,18 +101,31 @@ const App = () => {
     
     Responda resumindamente de acordo com sua personalidade: ${texto}
   `;
-  
+
     try {
-      const response = await fetch('http://localhost:4000/pergunte-ao-gemini', {
-        method: 'POST',
+      const response = await axios.post('http://localhost:4000/pergunte-ao-gemini', {
+        prompt,
+        userId,             // ID do usuário
+        characterName: personagemAtivo, // Nome do personagem ativo
+        message: texto
+      }, {
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ prompt })
+        }
       });
       
-      const data = await response.json();
+      const data = response.data;
       setMensagens([...mensagens, { tipo: 'enviada', texto }, { tipo: 'recebida', texto: data.completion }]);
+
+      // --- inserção do log
+      // Em seguida, registra o log da conversa
+    await axios.post('http://localhost:4000/inserir-log', {
+      character_name: personagemAtivo,
+      message: texto,
+      response_chat: data.completion,
+      usuario_chat_idusuario_chat: userId
+    });
+
     } catch (error) {
       console.error("Erro ao enviar a mensagem:", error);
     }
