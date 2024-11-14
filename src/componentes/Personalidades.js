@@ -432,3 +432,5 @@ const personalidades = {
     "citação_inspiradora": "All I can do is work hard! That's the story of my life."
   }
 }  
+
+export default personalidades;
