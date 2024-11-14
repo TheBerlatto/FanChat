@@ -15,6 +15,26 @@ const imagensPersonagens = {
   'Tony Stark': require('./images/TonyStark.jpg'),
   'Katniss Everdeen': require('./images/Katniss.jpg'),
   'Bob Esponja': require('./images/BobEsponja.jpg'),
+  'Mario': require('./images/Mario.jpg'),
+  'Link': require('./images/Link.jpg'),
+  'Pikachu': require('./images/Pikachu.jpg'),
+  'Sonic': require('./images/Sonic.jpg'),
+  'Lara Croft': require('./images/LaraCroft.jpg'),
+  'Kratos': require('./images/Kratos.jpg'),
+  'Master Chief': require('./images/MasterChief.jpg'),
+  'Geralt de Rívia': require('./images/Geralt.jpg'),
+  'Ryu': require('./images/Ryu.jpg'),
+  'Solid Snake': require('./images/Snake.jpg'),
+  'Goku': require('./images/Goku.jpg'),
+  'Naruto Uzumaki': require('./images/Naruto.jpg'),
+  'Luffy': require('./images/Luffy.jpg'),
+  'Sailor Moon': require('./images/SailorMoon.jpg'),
+  'Light Yagami': require('./images/LightYagami.jpg'),
+  'Eren Yeager': require('./images/Eren.jpg'),
+  'Edward Elric': require('./images/Edward.jpg'),
+  'Ichigo Kurosaki': require('./images/Ichigo.jpg'),
+  'Saitama': require('./images/Saitama.jpg'),
+  'Tanjiro Kamado': require('./images/Tanjiro.jpg'),
 }
 
 const App = () => {
@@ -66,12 +86,6 @@ const App = () => {
 
   // Função para enviar mensagem
   const enviarMensagem = async (texto) => {
-
-    if (!userId) {
-      console.error("User ID não disponível");
-      return;
-    }
-
     const personagem = Personalidades[personagemAtivo];
     const prompt = ` Voce é ${personagemAtivo}, essas são suas características:
     Traços: ${personagem.traços.join(", ")}
@@ -81,60 +95,46 @@ const App = () => {
     
     Responda resumindamente de acordo com sua personalidade: ${texto}
   `;
-
+  
     try {
-      const response = await axios.post('http://localhost:4000/pergunte-ao-gemini', {
-        prompt,
-        userId,             // ID do usuário
-        characterName: personagemAtivo, // Nome do personagem ativo
-        message: texto
-      }, {
+      const response = await fetch('http://localhost:4000/pergunte-ao-gemini', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({ prompt })
       });
       
-      const data = response.data;
+      const data = await response.json();
       setMensagens([...mensagens, { tipo: 'enviada', texto }, { tipo: 'recebida', texto: data.completion }]);
-
-      // --- inserção do log
-      // Em seguida, registra o log da conversa
-    await axios.post('http://localhost:4000/inserir-log', {
-      character_name: personagemAtivo,
-      message: texto,
-      response_chat: data.completion,
-      usuario_chat_idusuario_chat: userId
-    });
-
     } catch (error) {
       console.error("Erro ao enviar a mensagem:", error);
     }
   };
+  
 
   return (
-    <div className='container-fluid mt-2'>
-      <div className='row'>
-        <h2
-          className='mb-4'
-          style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Personagens</h2>
-      </div>
-      <div className='row'>
-        {/* Coluna de Personagens, define o tamanho da div perante a tela */}
-        <div className='col-12 col-md-4'>
-          <div className='colunm'>
-            {personagens.map((personagem, index) => (
-              <div key={index} className='col-12 col-xl-8 col-lg-10 mb-3'> {/*define o tamanho da div perante a div de cima */}
-                <Cartao
-                  imagem={imagensPersonagens[personagem]}
-                  nome={personagem}
-                  onSelect={() => iniciarConversa(personagem)} />
-              </div>
-            ))}
-          </div>
+    <div>
+      <h2 className='titulos' style={{padding: '12px'}}>
+        Personagens
+      </h2>
+
+      <div className='d-flex'>
+        {/* Coluna de Personagens */}
+        <div className='col-12 col-md-4 col-lg-3 lista-personagens'>
+          {personagens.map((personagem, index) => (
+            <div key={index} className='mb-3'>
+              <Cartao
+                imagem={imagensPersonagens[personagem]}
+                nome={personagem}
+                onSelect={() => iniciarConversa(personagem)}
+              />
+            </div>
+          ))}
         </div>
 
         {/* Coluna de Chat */}
-        <div className='col-12 col-md-8 col-xl-8'>
+        <div className='col-12 col-md-8 col-lg-9 d-flex align-items-stretch'>
           {personagemAtivo ? (
             <Chat
               personagem={personagemAtivo}
@@ -143,8 +143,8 @@ const App = () => {
               personalidade={Personalidades[personagemAtivo]}
             />
           ) : (
-            <div className='text-center'>
-              <h3 style={{ margin: '0', fontFamily: 'Afacad Flux', fontWeight: 700, color: 'white' }}>Selecione um personagem para conversar</h3>
+              <div className='text-center d-flex justify-content-center align-items-center titulos' style={{ width: '100%', height: '100%' }}>
+              <h3>Selecione um personagem para conversar</h3>
             </div>
           )}
         </div>

@@ -1,50 +1,43 @@
 .chat-window {
   background-color: #1e1f22;
-  /* Fundo escuro sofisticado */
   color: #e8e6e3;
-  /* Texto claro */
   border: none;
   border-radius: 12px;
-  /* Bordas arredondadas e suaves */
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  /* Espaçamento confortável */
-  font-family: 'Inter', sans-serif;
-  /* Fonte fina e moderna */
+  padding: 12px;
+  margin-right: 16px;
+  flex-grow: 1;
+  overflow: hidden;
 }
 
-.chat-mensagens {
+.chat-mensagem {
   background-color: #26272a;
-  /* Fundo escuro para as mensagens */
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 15px;
-  margin-bottom: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 12px;
-  /* Espaçamento entre mensagens */
+  max-height: calc(100vh - 205px);
 }
 
 .chat-msg {
   font-size: 14px;
-  /* Texto menor e mais leve */
   line-height: 1.5;
   max-width: 75%;
-  /* Limite de largura para evitar mensagens largas demais */
 }
+
 
 .chat-msg.enviada {
   align-self: flex-end;
   /* Alinhamento à direita para mensagens enviadas */
   background-color: #3a3b3d;
-  /* Fundo levemente mais claro para mensagens enviadas */
   color: #ffffff;
   padding: 12px 18px;
   border-radius: 16px 16px 0 16px;
-  /* Bordas arredondadas e elegantes */
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
   /* Sombra suave */
 }
@@ -53,7 +46,6 @@
   align-self: flex-start;
   /* Alinhamento à esquerda */
   background-color: #2e2f31;
-  /* Fundo escuro para mensagens recebidas */
   color: #ffffff;
   padding: 12px 18px;
   border-radius: 16px 16px 16px 0;
@@ -64,18 +56,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: auto; 
 }
 
 .input-group input {
   background-color: #333435;
-  /* Fundo escuro no input */
   color: #ffffff;
   border: 1px solid #4a4a4d;
   border-radius: 12px;
-  padding: 10px 15px;
+  padding: 12px 12px;
   font-size: 16px;
   font-weight: 300;
-  /* Fonte leve */
+  flex: 1;
 }
 
 .input-group input::placeholder {
@@ -86,11 +78,10 @@
 
 .input-group button {
   background-color: #28a745;
-  /* Verde para o botão enviar */
   color: white;
   border: none;
   border-radius: 12px;
-  padding: 10px 15px;
+  padding: 12px 12px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
