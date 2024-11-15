@@ -12,7 +12,7 @@
 
 ## Sobre o Projeto
 
-Bem-vindo ao **Fan Chat**! Este projeto permite que os usuários interajam com personagens icônicos através de uma interface intuitiva. Utilizando a API do ChatGPT, os usuários podem fazer perguntas e receber respostas que refletem as personalidades e características dos personagens à disposição.
+Bem-vindo ao **Fan Chat**! Este projeto permite que os usuários interajam com personagens icônicos através de uma interface intuitiva. Utilizando a API do Gemini e hospedagem de banco de dados Aiven.io, os usuários podem vivenciar a experiência de bater papo com os seus personagens favoritos, ou até mesmo, conhecer alguns a disposição.
 
 ### Objetivo
 
@@ -22,6 +22,6 @@ O objetivo deste projeto é proporcionar uma experiência divertida e imersiva, 
 
 - **Frontend:** ![HTML](https://img.shields.io/badge/HTML-5-orange?style=flat&logo=html5)![CSS](https://img.shields.io/badge/CSS-3-blue?style=flat&logo=css3)![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=flat&logo=javascript)![React](https://img.shields.io/badge/React-16.13-blue?style=flat&logo=react)
 - **Backend:** ![Node.js](https://img.shields.io/badge/Node.js-14-green?style=flat&logo=node.js)
-- **API:** OpenAI | ChatGPT
-- **Banco de Dados:** MySQL
+- **API:** Google | Gemini
+- **Banco de Dados:** MySQL | Aiven.io
 
