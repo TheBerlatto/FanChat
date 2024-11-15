@@ -99,7 +99,7 @@ const App = () => {
     Interesses: ${personagem.interesses.join(", ")}
     Citação Inspiradora: "${personagem.citação_inspiradora}"
     
-    Responda resumindamente de acordo com sua personalidade: ${texto}
+    Responda resumidamente de acordo com sua personalidade: ${texto}
   `;
 
     try {
