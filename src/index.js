@@ -162,7 +162,7 @@ const App = () => {
               personalidade={Personalidades[personagemAtivo]}
             />
           ) : (
-              <div className='text-center d-flex justify-content-center align-items-center titulos' style={{ width: '100%', height: '100%' }}>
+              <div className='d-flex justify-content-center align-items-center titulos' style={{ width: '100%', height: '100%' }}>
               <h3>Selecione um personagem para conversar</h3>
             </div>
           )}

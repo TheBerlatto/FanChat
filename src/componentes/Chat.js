@@ -30,7 +30,7 @@ const Chat = ({ personagem, mensagens, enviarMensagem, personalidade }) => {
   };
 
   return (
-    <div className="chat-window ">
+    <div className="chat-window">
       <h4 className='mb-2 titulos'>Conversando com {personagem}</h4>
       <div className="chat-mensagem">
         {mensagens.map((msg, index) => (
