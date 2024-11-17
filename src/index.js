@@ -64,7 +64,7 @@ const App = () => {
       console.error("Erro ao criar usuário:", error);
     }
   }
-//---------------------------------------------------------------------------------------------------
+  //---------------------------------------------------------------------------------------------------
   // Verifica ou cria o userId ao carregar o componente
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
@@ -77,7 +77,7 @@ const App = () => {
       setUserId(storedUserId);
     }
   }, []);
-//---------------------------------------------------------------------------------------------------
+  //---------------------------------------------------------------------------------------------------
   // Função para selecionar personagem
   const iniciarConversa = (personagem) => {
     setPersonagemAtivo(personagem);
@@ -91,6 +91,12 @@ const App = () => {
       console.error("User ID não disponível");
       return;
     }
+
+    // Atualiza o estado imediatamente com a mensagem do usuário
+    setMensagens((prevMensagens) => [
+      ...prevMensagens,
+      { tipo: 'enviada', texto }
+    ]);
 
     const personagem = Personalidades[personagemAtivo];
     const prompt = ` Voce é ${personagemAtivo}, essas são suas características:
@@ -113,28 +119,33 @@ const App = () => {
           'Content-Type': 'application/json'
         }
       });
-      
+
       const data = response.data;
-      setMensagens([...mensagens, { tipo: 'enviada', texto }, { tipo: 'recebida', texto: data.completion }]);
+
+      // Adiciona a resposta do Gemini ao estado das mensagens
+      setMensagens((prevMensagens) => [
+        ...prevMensagens,
+        { tipo: 'recebida', texto: data.completion }
+      ]);
 
       // --- inserção do log
       // Em seguida, registra o log da conversa
-    await axios.post('http://localhost:4000/inserir-log', {
-      character_name: personagemAtivo,
-      message: texto,
-      response_chat: data.completion,
-      usuario_chat_idusuario_chat: userId
-    });
+      await axios.post('http://localhost:4000/inserir-log', {
+        character_name: personagemAtivo,
+        message: texto,
+        response_chat: data.completion,
+        usuario_chat_idusuario_chat: userId
+      });
 
     } catch (error) {
       console.error("Erro ao enviar a mensagem:", error);
     }
   };
-  
+
 
   return (
     <div>
-      <h2 className='titulos' style={{padding: '12px'}}>
+      <h2 className='titulos' style={{ padding: '12px' }}>
         Personagens
       </h2>
 
@@ -162,7 +173,7 @@ const App = () => {
               personalidade={Personalidades[personagemAtivo]}
             />
           ) : (
-              <div className='d-flex justify-content-center align-items-center titulos' style={{ width: '100%', height: '100%' }}>
+            <div className='d-flex justify-content-center align-items-center titulos' style={{ width: '100%', height: '100%' }}>
               <h3>Selecione um personagem para conversar</h3>
             </div>
           )}
